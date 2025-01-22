@@ -43,7 +43,7 @@ const RecipeCard = ({meal}) => {
     return (
         <div className="flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative">
             {/* anchor - ensures entire thing (image) clickable to link; preview pic */}
-            <a href={meal.strYoutube} className="relative h-32">
+            <a href={meal.strYoutube} target="_blank" className="relative h-32">
                 {/* inside anchor, image then div over image in absolute position */}
                 <img src={meal.strMealThumb} alt="recipe img"
                 className="rounded-md w-full h-full object-cover cursor-pointer"
