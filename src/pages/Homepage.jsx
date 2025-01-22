@@ -75,7 +75,7 @@ const HomePage = () => {
                 </div>
                 <div className="skeleton h-32 w-full"></div>
               </div>
-            ))};
+            ))}
 
         </div>
       </div>
