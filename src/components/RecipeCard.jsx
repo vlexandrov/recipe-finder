@@ -1,7 +1,7 @@
 import { Heart, HeartPulse, Soup } from 'lucide-react'
 //import React from 'react'
 
-const RecipeCard = () => {
+const RecipeCard = ({meal}) => {
   return (
     <div className="flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative">
         {/* anchor - ensures entire thing (image) clickable to link; preview pic */}
@@ -14,8 +14,7 @@ const RecipeCard = () => {
             {/* servings div */}
             <div className="absolute bottom-2 left-2 bg-white rounded-full p-1 cursor-pointer flex
             items-center gap-1 text-sm">
-            <Soup size={"16"} />
-            4 Servings
+            <Soup size={"16"} /> {meal.idMeal}
             </div>
 
             {/* favourites button div */}
