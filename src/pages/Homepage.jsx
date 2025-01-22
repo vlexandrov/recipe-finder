@@ -17,6 +17,10 @@ const HomePage = () => {
       const res = await fetch(`https://www.themealdb.com/api/json/v1/${APP_KEY}/search.php?s=${searchQuery}`);
       const data = await res.json();
       setRecipes(data.meals)
+      console.log(data.meals)
+
+      // console.log(data.meals[0].strMeal)
+      // get first meal in data, then name of meal
     } catch (error) {
       console.log(error.message)
     } finally {
@@ -52,21 +56,27 @@ const HomePage = () => {
 
         {/* cards */}
         <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">         
-          {/* TEMPORARY - populate homepage with recipes */}
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-        </div>
+          {/* using skeleton from daisy ui */}
+          {/* if it is loading, map through 9 times skeleton loading div */}
+          {!loading && recipes.map(({recipe}, index) => (
+            <RecipeCard key={index} recipe={recipe} />
+          ))}
 
+          {loading &&
+            [...Array(9)].map((_, index) => (
+              <div className="flex w-52 flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                  <div className="flex flex-col gap-4">
+                    <div className="skeleton h-4 w-20"></div>
+                    <div className="skeleton h-4 w-28"></div>
+                  </div>
+                </div>
+                <div className="skeleton h-32 w-full"></div>
+              </div>
+            ))};
+
+        </div>
       </div>
     </div>
   );
