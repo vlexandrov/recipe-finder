@@ -149,7 +149,7 @@ const RecipeCard = ({meal}) => {
                             <img 
                                 src={meal.strMealThumb}
                                 alt="meal img"
-                                className="rounded-md w-full h-40 object-cover mb-2"
+                                className="rounded-md w-full h-full object-cover mb-2"
                             />
                             <div className="bg-[#F9EFE1] p-3 rounded-md mb-2">
                                 <h3 className="font-bold text-lg mb-2">Ingredients</h3>
