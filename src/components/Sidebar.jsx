@@ -23,7 +23,15 @@ const DesktopSidebar = () => {
           <img src="/mobile-logo.svg" alt="logo" className="block md:hidden" />
         </div>
         <ul className="flex flex-col items-center md:items-start gap-8">
-          <Link to={"/"} className="flex gap-1" onClick={() => window.location.reload()}>
+          {/* <Link 
+            to={"/"} 
+            className="flex gap-1" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "/";
+            }}
+          > */}
+          <Link reloadDocument to={"/"} className="flex gap-1">
             <Home size={"24"}/>
             <span className="font-bold hidden md:block">Home</span>
           </Link>
@@ -40,7 +48,14 @@ const DesktopSidebar = () => {
 const MobileSidebar = () => {
   return(
     <div className="flex justify-center gap-10 border-t fixed w-full bottom-0 left-0 bg-white z-10 p-2 sm:hidden">
-      <Link to={"/"} onClick={() => window.location.reload()}>
+      {/* <Link 
+        to={"/"} 
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = "/";
+        }}
+      > */}
+      <Link reloadDocument to={"/"}>
         <Home size={"24"} className="cursor-pointer"/>
       </Link>
       <Link to={"/favourites"}>
