@@ -134,42 +134,49 @@ const RecipeCard = ({meal}) => {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-md p-6 max-w-lg w-full max-h-screen overflow-y-auto">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-bold">{meal.strMeal}</h2>
-                            <button 
-                                className="text-red-300 hover:text-red-600 font-bold"
-                                onClick={toggleModal}
-                            >
-                                <CircleX />
-                            </button>
-                        </div>
-                        <img 
-                            src={meal.strMealThumb}
-                            alt="meal img"
-                            className="rounded-md w-full h-40 object-cover mb-4"
-                        />
-                        <h3 className="font-bold text-lg mb-2">Ingredients</h3>
-                        <ul className="list-disc ml-6">
-                            {renderIngredients().map((ingredient, index) => (
-                                <li key={index}>{ingredient}</li>
-                            ))}
-                        </ul>
-                        <h3 className="font-bold text-lg mt-4 mb-2">Instructions</h3>
-                        <p>{meal.strInstructions}</p>
-                        
-                        {/* Source */}
-                        {meal.strSource && (
-                            <div className="mt-4">
-                                <a
-                                    href={meal.strSource}
-                                    target="_blank"
-                                    className="text-blue-500 underline"
+                    <div className="bg-white rounded-md max-w-lg w-full max-h-screen overflow-hidden shadow">
+                    {/* <div className="bg-white rounded-md p-6 max-w-lg w-full max-h-screen overflow-y-auto"> */}
+                        <div className="overflow-y-auto max-h-screen p-6">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-xl font-bold">{meal.strMeal}</h2>
+                                <button 
+                                    className="text-red-300 hover:text-red-600 font-bold"
+                                    onClick={toggleModal}
                                 >
-                                    Written source (opens in new tab)
-                                </a>
+                                    <CircleX />
+                                </button>
                             </div>
-                        )}
+                            <img 
+                                src={meal.strMealThumb}
+                                alt="meal img"
+                                className="rounded-md w-full h-40 object-cover mb-4"
+                            />
+                            <div className="bg-slate-400">
+
+                                <h3 className="font-bold text-lg mb-2">Ingredients</h3>
+                                <ul className="list-disc ml-6">
+                                    {renderIngredients().map((ingredient, index) => (
+                                        <li key={index}>{ingredient}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <h3 className="font-bold text-lg mt-4 mb-2">Instructions</h3>
+                            <p>{meal.strInstructions}</p>
+                            
+                            {/* Source */}
+                            {meal.strSource && (
+                                <div className="mt-4">
+                                    <a
+                                        href={meal.strSource}
+                                        target="_blank"
+                                        className="text-blue-500 underline"
+                                    >
+                                        Written source (opens in new tab)
+                                    </a>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
