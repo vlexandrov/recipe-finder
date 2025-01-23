@@ -134,7 +134,7 @@ const RecipeCard = ({meal}) => {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-md max-w-lg w-full max-h-screen overflow-hidden shadow">
+                    <div className="bg-[#faf9fb] rounded-md max-w-lg w-full max-h-screen overflow-hidden shadow">
                     {/* <div className="bg-white rounded-md p-6 max-w-lg w-full max-h-screen overflow-y-auto"> */}
                         <div className="overflow-y-auto max-h-screen p-6">
                             <div className="flex justify-between items-center mb-4">
@@ -149,10 +149,9 @@ const RecipeCard = ({meal}) => {
                             <img 
                                 src={meal.strMealThumb}
                                 alt="meal img"
-                                className="rounded-md w-full h-40 object-cover mb-4"
+                                className="rounded-md w-full h-40 object-cover mb-2"
                             />
-                            <div className="bg-slate-400">
-
+                            <div className="bg-[#F9EFE1] p-3 rounded-md mb-2">
                                 <h3 className="font-bold text-lg mb-2">Ingredients</h3>
                                 <ul className="list-disc ml-6">
                                     {renderIngredients().map((ingredient, index) => (
@@ -160,21 +159,22 @@ const RecipeCard = ({meal}) => {
                                     ))}
                                 </ul>
                             </div>
-
-                            <h3 className="font-bold text-lg mt-4 mb-2">Instructions</h3>
-                            <p>{meal.strInstructions}</p>
+                            <div className="bg-[#FBE5E7] p-3 rounded-md mb-2">
+                                <h3 className="font-bold text-lg mb-2">Instructions</h3>
+                                <p className="tracking-normal">{meal.strInstructions}</p>
+                            </div>
                             
                             {/* Source */}
                             {meal.strSource && (
-                                <div className="mt-4">
-                                    <a
-                                        href={meal.strSource}
-                                        target="_blank"
-                                        className="text-blue-500 underline"
-                                    >
-                                        Written source (opens in new tab)
-                                    </a>
-                                </div>
+                                <a
+                                    href={meal.strSource}
+                                    target="_blank"
+                                    
+                                >
+                                    <div className="bg-[#ECF7D4] text-center rounded-md p-2 hover:bg-[#D6F497]">
+                                            <span className="text-md font-semibold">Written source (opens in new tab)</span>                        
+                                    </div>
+                                </a>
                             )}
                         </div>
                     </div>
