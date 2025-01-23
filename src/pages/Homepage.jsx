@@ -17,8 +17,8 @@ const HomePage = () => {
       const res = await fetch(`https://www.themealdb.com/api/json/v1/${APP_KEY}/search.php?s=${searchQuery}`);
       const data = await res.json();
       setRecipes(data.meals)
-      console.log(recipes)
-      console.log(recipes[0])
+      // console.log(recipes)
+      // console.log(recipes[0])
 
       // console.log(data.meals[0].strMeal)
       // get first meal in data, then name of meal
