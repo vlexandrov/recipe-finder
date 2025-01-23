@@ -46,14 +46,19 @@ const RecipeCard = ({meal}) => {
     // prevent scrolling while modal is open
     useEffect(() => {
         if (isModalOpen) {
+            const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth; // calculate scroll bar width
             document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollBarWidth}px`; // add padding equal to scroll bar width to avoid shifting elements
         } else {
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            
         }
 
         // cleanup to reset overflow when component unmounts
         return () => {
             document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
         };
     }, [isModalOpen]);
 
