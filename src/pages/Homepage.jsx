@@ -65,40 +65,52 @@ const HomePage = () => {
           </label>
         </form>
 
-        <h1 className="font-bold text-3xl md:text-5xl mt-4">
+        {/* <h1 className="font-bold text-3xl md:text-5xl mt-4">
           Recommended Recipes
-        </h1>
+        </h1> */}
 
-        <p className="text-slate-500 font-semibold ml-1 my-2 text-sm tracking-tight">
+        {/* <p className="text-slate-500 font-semibold ml-1 my-2 text-sm tracking-tight">
           Popular choices
-        </p>
+        </p> */}
 
-        {/* cards */}
-        <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">         
-          {/* using skeleton from daisy ui */}
+        {noResults && (
+          <p className="pt-10 text-center text-5xl text-slate-500 font-semibold"> No recipes found :( </p>
+        )}
 
-          {/* if no results from search string */}
-          {!loading && noResults && (
-            <p className="text-center text-5xl text-slate-500 font-semibold"> No recipes found :( </p>
-          )}
+        {!noResults && (
+          <>
+            <h1 className="font-bold text-3xl md:text-5xl mt-4">
+              Recommended Recipes
+            </h1>
 
-          {/* if it is loading, map through 9 times skeleton loading div */}
-          {!loading && !noResults && recipes.map((meal, index) => (
-            <RecipeCard key={index} meal={meal} />
-          ))}
+            <p className="text-slate-500 font-semibold ml-1 my-2 text-sm tracking-tight">
+              Popular choices
+            </p>
 
-          {loading &&
-            [...Array(15)].map((_, index) => (
-              <div key={index} className="flex w-full flex-col gap-4">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="flex justify-between">
-                    <div className="skeleton h-4 w-28"></div>
-                    <div className="skeleton h-4 w-24"></div>
-                  </div>                
-                <div className="skeleton h-4 w-1/2"></div>
-              </div>
-            ))}
-        </div>
+            <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">         
+              {/* using skeleton from daisy ui */}
+
+              {/* if it is loading, map through 9 times skeleton loading div */}
+              {!loading && !noResults && recipes.map((meal, index) => (
+                <RecipeCard key={index} meal={meal} />
+              ))}
+
+              {loading &&
+                [...Array(15)].map((_, index) => (
+                  <div key={index} className="flex w-full flex-col gap-4">
+                      <div className="skeleton h-32 w-full"></div>
+                      <div className="flex justify-between">
+                        <div className="skeleton h-4 w-28"></div>
+                        <div className="skeleton h-4 w-24"></div>
+                      </div>                
+                    <div className="skeleton h-4 w-1/2"></div>
+                  </div>
+                ))}
+            </div>
+          </>
+        )}
+
+        
       </div>
     </div>
   );
