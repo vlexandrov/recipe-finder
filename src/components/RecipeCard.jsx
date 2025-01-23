@@ -83,13 +83,14 @@ const RecipeCard = ({meal}) => {
 
                 {/* if meal.strTags is not null then render */}
                 {meal.strYoutube && (
-                    <div className="flex gap-1 bg-[#d6f497] items-center p-2 rounded-md">
-                        <SquarePlay size={"16"} />
-                        <a href={meal.strYoutube} target="_blank">                        
+                    <a href={meal.strYoutube} target="_blank">
+                        <div className="flex gap-1 bg-[#d6f497] items-center p-2 rounded-md">
+                            <SquarePlay size={"16"} />
                             <span className="text-sm tracking-tighter font-semibold">Video Guide</span>
-                        </a>
                         {/* <span className="text-sm tracking-tighter font-semibold">{meal.strTags}</span> */}
-                    </div>
+                        </div>
+                    </a>
+                    
                 )}
             </div>
             {/* Modal */}
