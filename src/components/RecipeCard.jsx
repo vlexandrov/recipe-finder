@@ -5,13 +5,15 @@ import { useEffect, useState } from 'react'
 
 const RecipeCard = ({meal}) => {
 
-    // modal for written instructions
+    // modal function for written instructions
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
 
+    // function to render ingredients from API, formatting to ingredient - measurement
+    // ingredients are in separate json objects, hence the need for this function
     const renderIngredients = () => {
         const ingredients = [];
         for (let i = 1; i <= 20; i++) {
@@ -24,6 +26,23 @@ const RecipeCard = ({meal}) => {
         }
         return ingredients;
     };
+
+    const [isFavourite, setIsFavourite] = useState(localStorage.getItem('favourites')?.includes(meal.strMeal));
+
+    const addRecipeToFavourites = () => {
+        let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
+        const isRecipeAlreadyInFavourites = favourites.some((fav) => fav.strMeal === meal.strMeal);
+
+        if(isRecipeAlreadyInFavourites) {
+            favourites = favourites.filter((fav) => fav.strMeal !== meal.strMeal);
+            setIsFavourite(false);
+        } else {
+            favourites.push(meal)
+            setIsFavourite(true);
+        }
+
+        localStorage.setItem("favourites", JSON.stringify(favourites));
+    }
 
     // prevent scrolling while modal is open
     useEffect(() => {
@@ -56,8 +75,14 @@ const RecipeCard = ({meal}) => {
                 </div>
 
                 {/* favourites button div */}
-                <div className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer">
-                <Heart size={"20"} className="hover:fill-red-500 hover:text-red-500" />
+                <div className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer" 
+                    onClick={(e) => {
+                        e.preventDefault();
+                        addRecipeToFavourites();
+                    } }
+                >
+                    {!isFavourite && <Heart size={"20"} className="hover:fill-red-500 hover:text-red-500" />}
+                    {isFavourite && <Heart size={"20"} className="fill-red-500 text-red-500" />}
                 </div>
             </a>
 
