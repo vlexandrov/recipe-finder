@@ -3,8 +3,8 @@ import { Search } from "lucide-react";
 import RecipeCard from "../components/RecipeCard";
 import { useEffect, useState } from "react";
 
-const APP_ID = null;
-const APP_KEY = "1"
+const APP_ID = import.meta.env.VITE_APP_ID;
+const APP_KEY = import.meta.env.VITE_APP_KEY;
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
