@@ -1,4 +1,4 @@
-import { Heart, HeartPulse, Soup } from 'lucide-react'
+import { Heart, HeartPulse, Soup, SquarePlay, Youtube } from 'lucide-react'
 import { useEffect, useState } from 'react'
 //import React from 'react'
 
@@ -79,10 +79,13 @@ const RecipeCard = ({meal}) => {
                 </button>
 
                 {/* if meal.strTags is not null then render */}
-                {meal.strTags && (
-                    <div className="flex gap-1 bg-[#d6f497] items-center p-1 rounded-md">
-                        {/* <HeartPulse size={"16"} /> */}
-                        <span className="text-sm tracking-tighter font-semibold">{meal.strTags}</span>
+                {meal.strYoutube && (
+                    <div className="flex gap-1 bg-[#d6f497] items-center p-2 rounded-md">
+                        <SquarePlay size={"16"} />
+                        <a href={meal.strYoutube} target="_blank">                        
+                            <span className="text-sm tracking-tighter font-semibold">Video Guide</span>
+                        </a>
+                        {/* <span className="text-sm tracking-tighter font-semibold">{meal.strTags}</span> */}
                     </div>
                 )}
             </div>
