@@ -26,7 +26,6 @@ const HomePage = () => {
       }
       // console.log(recipes)
       // console.log(recipes[0])
-
       // console.log(data.meals[0].strMeal)
       // get first meal in data, then name of meal
     } catch (error) {

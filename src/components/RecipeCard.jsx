@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 
 
 const RecipeCard = ({meal}) => {
-
     // modal function for written instructions
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -58,7 +57,6 @@ const RecipeCard = ({meal}) => {
         };
     }, [isModalOpen]);
 
-
     return (
         <div className="flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative">
             {/* anchor - ensures entire thing (image) clickable to link; preview pic */}
@@ -80,11 +78,12 @@ const RecipeCard = ({meal}) => {
                 {/* servings div */}
                 <div className="absolute bottom-2 left-2 bg-white rounded-full p-1 cursor-pointer flex
                 items-center gap-1 text-sm">
-                <Soup size={"16"} /> {meal.strCategory}
+                    <Soup size={"16"} /> {meal.strCategory}
                 </div>
 
                 {/* favourites button div */}
-                <div className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer" 
+                <div 
+                    className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer" 
                     onClick={(e) => {
                         e.preventDefault();
                         addRecipeToFavourites();
@@ -134,8 +133,8 @@ const RecipeCard = ({meal}) => {
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-bold">{meal.strMeal}</h2>
                             <button 
-                            className="text-red-500 font-bold"
-                            onClick={toggleModal}
+                                className="text-red-500 font-bold"
+                                onClick={toggleModal}
                             >
                                 X
                             </button>
