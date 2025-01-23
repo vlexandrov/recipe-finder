@@ -1,4 +1,4 @@
-import { Heart, HeartPulse, Soup, SquarePlay, Youtube } from 'lucide-react'
+import { BookOpenText, Heart, HeartPulse, Soup, SquarePlay, Youtube } from 'lucide-react'
 import { useEffect, useState } from 'react'
 //import React from 'react'
 
@@ -72,10 +72,13 @@ const RecipeCard = ({meal}) => {
             {/* tag thingies */}
             <div className="flex gap-2 mt-auto">
                 <button
-                className="bg-[#d6f497] p-2 rounded-md text-sm font-semibold"
-                onClick={toggleModal}
+                    className="bg-[#d6f497] p-2 rounded-md text-sm font-semibold tracking-tighter"
+                    onClick={toggleModal}
                 >
-                    Written Instructions
+                    <span className="flex items-center justify-center gap-1">
+                        <BookOpenText size={"16"}/>
+                        Written Guide
+                    </span>
                 </button>
 
                 {/* if meal.strTags is not null then render */}
