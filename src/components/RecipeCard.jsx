@@ -64,8 +64,17 @@ const RecipeCard = ({meal}) => {
             {/* anchor - ensures entire thing (image) clickable to link; preview pic */}
             <a href={meal.strYoutube} target="_blank" className="relative h-32">
                 {/* inside anchor, image then div over image in absolute position */}
-                <img src={meal.strMealThumb} alt="recipe img"
-                className="rounded-md w-full h-full object-cover cursor-pointer"
+
+                {/* image optimisation - skeleton while loading */}
+                <div className="skeleton absolute inset-0"/>    
+                <img 
+                    src={meal.strMealThumb} 
+                    alt="recipe img"
+                    className="rounded-md w-full h-full object-cover cursor-pointer opacity-0 transition-opacity duration-500"
+                    onLoad={(e) => {
+                        e.currentTarget.style.opacity = 1;
+                        e.currentTarget.previousElementSibling.style.display = "none";
+                    }}
                 />
 
                 {/* servings div */}
