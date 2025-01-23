@@ -36,7 +36,7 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    fetchRecipes("chicken");
+    fetchRecipes("");
   }, []);
 
   const handleSearchRecipe = (e) => {
@@ -44,7 +44,7 @@ const HomePage = () => {
     const searchQuery = e.target[0].value;
 
     if (searchQuery === "") {
-      fetchRecipes("chicken");
+      fetchRecipes("");
     } else {
       fetchRecipes(searchQuery);
     }
