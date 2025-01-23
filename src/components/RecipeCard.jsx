@@ -67,7 +67,7 @@ const RecipeCard = ({meal}) => {
             </div>
 
             {/* cuisine */}
-            <p className="my-2">{meal.strArea}</p>
+            <p className="my-2">{meal.strArea} Cuisine</p>
 
             {/* tag thingies */}
             <div className="flex gap-2 mt-auto">
