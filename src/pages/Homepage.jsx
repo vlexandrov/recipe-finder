@@ -9,21 +9,28 @@ const APP_KEY = "1"
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noResults, setNoResults] = useState(false); // state for tracking no recipe results
 
   const fetchRecipes = async (searchQuery) => {
     setLoading(true);
     setRecipes([]);
+    setNoResults(false);
     try {
       const res = await fetch(`https://www.themealdb.com/api/json/v1/${APP_KEY}/search.php?s=${searchQuery}`);
       const data = await res.json();
-      setRecipes(data.meals)
+
+      if (data.meals === null) {
+        setNoResults(true);        
+      } else {
+        setRecipes(data.meals);
+      }
       // console.log(recipes)
       // console.log(recipes[0])
 
       // console.log(data.meals[0].strMeal)
       // get first meal in data, then name of meal
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     } finally {
       setLoading(false);
     }
@@ -35,7 +42,13 @@ const HomePage = () => {
 
   const handleSearchRecipe = (e) => {
     e.preventDefault();
-    fetchRecipes(e.target[0].value);
+    const searchQuery = e.target[0].value;
+
+    if (searchQuery === "") {
+      fetchRecipes("chicken");
+    } else {
+      fetchRecipes(searchQuery);
+    }
   }
 
 
@@ -63,8 +76,14 @@ const HomePage = () => {
         {/* cards */}
         <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">         
           {/* using skeleton from daisy ui */}
+
+          {/* if no results from search string */}
+          {!loading && noResults && (
+            <p className="text-center text-5xl text-slate-500 font-semibold"> No recipes found :( </p>
+          )}
+
           {/* if it is loading, map through 9 times skeleton loading div */}
-          {!loading && recipes.map((meal, index) => (
+          {!loading && !noResults && recipes.map((meal, index) => (
             <RecipeCard key={index} meal={meal} />
           ))}
 
@@ -79,7 +98,6 @@ const HomePage = () => {
                 <div className="skeleton h-4 w-1/2"></div>
               </div>
             ))}
-
         </div>
       </div>
     </div>
