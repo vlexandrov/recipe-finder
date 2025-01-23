@@ -1,4 +1,4 @@
-import { BookOpenText, Heart, HeartPulse, Soup, SquarePlay, Youtube } from 'lucide-react'
+import { BookOpenText, CircleX, Heart, HeartPulse, Soup, SquarePlay, Youtube } from 'lucide-react'
 import { useEffect, useState } from 'react'
 //import React from 'react'
 
@@ -133,10 +133,10 @@ const RecipeCard = ({meal}) => {
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-bold">{meal.strMeal}</h2>
                             <button 
-                                className="text-red-500 font-bold"
+                                className="text-red-300 hover:text-red-600 font-bold"
                                 onClick={toggleModal}
                             >
-                                X
+                                <CircleX />
                             </button>
                         </div>
                         <img 
